@@ -18,8 +18,19 @@ module.exports = {
         }
       },
       {
-        test: /\.css/,
-        use: [ 'style-loader', 'css-loader' ]    
+        test: /\.scss/,
+        // loader 从下到上 从右到左
+        use: [ 
+            'style-loader',
+             {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+             },
+             'sass-loader',
+             'postcss-loader'
+            ]    
       }
     ]   
   },
